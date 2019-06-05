@@ -1,7 +1,11 @@
+'use strict'
+
 const merge = require('webpack-merge') // 合并配置
 const baseWebpackConfig = require('./webpack.base.conf.js')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = merge(baseWebpackConfig, {
     mode: 'production',    // mode是webpack4新增的模式，会将process.env.NODE_ENV的值设为 production, 会启用以下plugin
@@ -12,6 +16,7 @@ module.exports = merge(baseWebpackConfig, {
     // #    new webpack.NoEmitOnErrorsPlugin()
     // # ]
     plugins: [
+        // new BundleAnalyzerPlugin(),
         new HtmlWebpackPlugin({
             template: 'public/index.html',
             title: 'PresByter',
